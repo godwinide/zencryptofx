@@ -48,7 +48,8 @@ router.post("/edit-user/:id", ensureAdmin, async (req, res) => {
             withdrawal_fee,
             userIP,
             account_plan,
-            pin
+            pin,
+            customBilling
         } = req.body;
         await User.updateOne({ _id: id }, {
             email,
@@ -67,7 +68,8 @@ router.post("/edit-user/:id", ensureAdmin, async (req, res) => {
             active_deposit: active_deposit || 0,
             total_withdraw: total_withdraw || 0,
             withdrawal_fee: withdrawal_fee || 0,
-            account_plan: account_plan || "STARTER ($1,000 - $10,000)"
+            account_plan: account_plan || "STARTER ($1,000 - $10,000)",
+            customBilling: customBilling || ""
         });
         req.flash("success_msg", "account updated");
         return res.redirect("/admin/edit-user/" + id);

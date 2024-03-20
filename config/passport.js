@@ -4,12 +4,12 @@ const bcrypt = require('bcryptjs');
 // Load User model
 const User = require('../model/User');
 
-module.exports = function(passport) {
+module.exports = function (passport) {
   passport.use(
-    new LocalStrategy({ usernameField: 'username' }, (username, password, done) => {
+    new LocalStrategy({ usernameField: 'email' }, (username, password, done) => {
       // Match user
       User.findOne({
-        username
+        email: username.toLocaleLowerCase().trim()
       }).then(user => {
         if (!user) {
           return done(null, false, { message: 'invalid username or password' });
@@ -27,12 +27,12 @@ module.exports = function(passport) {
     })
   );
 
-  passport.serializeUser(function(user, done) {
+  passport.serializeUser(function (user, done) {
     done(null, user.id);
   });
 
-  passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
+  passport.deserializeUser(function (id, done) {
+    User.findById(id, function (err, user) {
       done(err, user);
     });
   });

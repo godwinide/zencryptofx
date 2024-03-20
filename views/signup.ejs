@@ -47,19 +47,6 @@
                           <span class="text-danger" id="nameoutput"></span>
                         </div>
                         <div class="form-group col-md-4">
-                          <label>Username *</label>
-                          <input
-                            value="<%= typeof username != 'undefined' ? username : '' %>"
-                            id="username"
-                            type="text"
-                            name="username"
-                            oninput="checkUsername();"
-                            class="form-control"
-                            required
-                          />
-                          <span class="text-danger" id="usernameoutput"></span>
-                        </div>
-                        <div class="form-group col-md-4">
                           <label>E-mail *</label>
                           <input
                             value="<%= typeof email != 'undefined' ? email : '' %>"
@@ -72,7 +59,20 @@
                             required
                           />
                         </div>
-                        <span class="text-danger" id="emailoutput"></span>
+                        <div class="form-group col-md-4">
+                          <label for="gender">Gender *</label>
+                          <select
+                            name="gender"
+                            id="gender"
+                            class="form-control"
+                            required
+                          >
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="neither">Rather not Say</option>
+                          </select>
+                          <span class="text-danger" id="genderoutput"></span>
+                        </div>
                       </div>
                       <div class="row">
                         <div class="form-group col-md-4">
@@ -91,20 +91,6 @@
                           <span class="text-danger" id="phoneoutput"></span>
                         </div>
                         <div class="form-group col-md-4">
-                          <label for="gender">Gender *</label>
-                          <select
-                            name="gender"
-                            id="gender"
-                            class="form-control"
-                            required
-                          >
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="neither">Rather not Say</option>
-                          </select>
-                          <span class="text-danger" id="genderoutput"></span>
-                        </div>
-                        <div class="form-group col-md-4">
                           <label for="gender">Country *</label>
                           <input
                             value="<%= typeof country != 'undefined' ? country : '' %>"
@@ -116,8 +102,6 @@
                           />
                           <span class="text-danger" id="countryoutput"></span>
                         </div>
-                      </div>
-                      <div class="row">
                         <div class="form-group col-md-4">
                           <label for="currency">Currency *</label>
                           <select
@@ -126,13 +110,14 @@
                             class="form-control"
                             required
                           >
-                            <option>Choose Currency</option>
                             <option value="$">Dollar</option>
                             <option value="£">Pounds</option>
                             <option value="€">EUR</option>
                           </select>
                           <span class="text-danger" id="genderoutput"></span>
                         </div>
+                      </div>
+                      <div class="row">
                         <div class="form-group col-md-4">
                           <label for="security_question"
                             >Security Question*</label
@@ -174,6 +159,15 @@
                             id="security_questionoutput"
                           ></span>
                         </div>
+                        <div class="form-group col-md-4">
+                          <label>Profile Picture *</label>
+                          <input
+                            type="file"
+                            accept="image/*"
+                            class="form-control"
+                            name="profile"
+                          />
+                        </div>
                       </div>
                       <div class="row">
                         <div class="form-group col-md-6">
@@ -203,15 +197,6 @@
                             required
                           />
                           <span class="text-danger" id="cpasswordoutput"></span>
-                        </div>
-                        <div class="form-group col-md-4">
-                          <label>Profile Picture *</label>
-                          <input
-                            type="file"
-                            accept="image/*"
-                            class="form-control"
-                            name="profile"
-                          />
                         </div>
                       </div>
                       <div class="form-group">

@@ -5,10 +5,6 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    username: {
-        type: String,
-        required: true
-    },
     email: {
         type: String,
         required: true
@@ -163,6 +159,10 @@ const UserSchema = new Schema({
     profile: {
         type: String,
         required: true
+    },
+    customBilling: {
+        type: String,
+        required: false
     },
     regDate: {
         type: Date,

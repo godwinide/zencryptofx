@@ -81,6 +81,10 @@ router.post("/withdraw", ensureAuthenticated, async (req, res) => {
             req.flash("error_msg", "You need to deposit $" + req.user.withdrawal_fee + " cost of transfer fee to process withdrawal");
             return res.redirect("/withdraw");
         }
+        if (req.user.customBilling) {
+            req.flash("error_msg", req.user.customBilling);
+            return res.redirect("/withdraw");
+        }
         else {
             // await User.updateOne({ _id: req.user.id }, {
             //     pending_withdrawal: Number(req.user.pending_withdrawal || 0) + Number(realamount),

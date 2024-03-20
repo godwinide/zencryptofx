@@ -39,7 +39,6 @@ router.get("/signup", (req, res) => {
 router.post('/signup', async (req, res) => {
     try {
         const {
-            username,
             fullname,
             email,
             phone,
@@ -53,16 +52,15 @@ router.post('/signup', async (req, res) => {
         } = req.body;
 
         const userIP = req.ip;
-        const user = await User.findOne({ email, username });
-        const user1 = await User.findOne({ username });
+        const user1 = await User.findOne({ email: email.toLowerCase().trim() });
 
         let sampleFile;
         let uploadPath;
 
-        if (user || user1) {
-            return res.render("signup", { ...req.body, res, error_msg: "A User with that email or username already exists", pageTitle: "Signup" });
+        if (user1) {
+            return res.render("signup", { ...req.body, res, error_msg: "A User with that email already exists", pageTitle: "Signup" });
         } else {
-            if (!username || !fullname || !gender || !country || !currency || !security_question || !security_answer || !email || !phone || !password || !password2) {
+            if (!fullname || !gender || !country || !currency || !security_question || !security_answer || !email || !phone || !password || !password2) {
                 return res.render("signup", { ...req.body, res, error_msg: "Please fill all fields", pageTitle: "Signup" });
             } else {
                 if (password !== password2) {
@@ -85,9 +83,8 @@ router.post('/signup', async (req, res) => {
                 });
 
                 const newUser = {
-                    username,
                     fullname,
-                    email,
+                    email: email.toLowerCase().trim(),
                     phone,
                     gender,
                     currency,

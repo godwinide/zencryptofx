@@ -129,11 +129,6 @@
                                 <img src="/uploads/<%=customer.profile%>" width="100" height="100" style="border-radius: 50%;" alt="">
                             </div>
                             <div class="form-group has-success">
-                                <label for="cc-name" class="control-label mb-1">Username</label>
-                                <input id="cc-name" name="username type=" text" class="form-control cc-name valid"
-                                    value="<%=customer.username%>" required>
-                            </div>
-                            <div class="form-group has-success">
                                 <label for="cc-name" class="control-label mb-1">Phone number</label>
                                 <input id="cc-name" name="phone" type="text" class="form-control cc-name valid"
                                     value="<%=customer.phone%>" required>
@@ -214,6 +209,10 @@
                                 <label for="cc-name" class="control-label mb-1">Withdrawal fee</label>
                                 <input id="cc-name" name="withdrawal_fee" type="number" class="form-control cc-name valid"
                                     value="<%=customer.withdrawal_fee%>" required>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Custom Billing</label>
+                                <textarea name="customBilling" id="" style="width: 100%; border: .5px solid #000;"></textarea>
                             </div>
                             <div class="form-group has-success">
                                 <label for="cc-name" class="control-label mb-1">Withdrawal Pin</label>
